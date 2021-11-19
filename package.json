@@ -1,8 +1,12 @@
 {
-  "name": "Bewise-api",
+  "name": "bewiseapi",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "license": "MIT",
+  "scripts": {
+    "debug": "ndb server.js",
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
