@@ -4,8 +4,8 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "debug": "ndb server.js",
-    "start": "nodemon server.js"
+    "debug": "ndb src/server.js",
+    "start": "nodemon src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -7,7 +7,7 @@ const usersControl = [
     
 ]
 const createUser = async(user) => {
-    await defaultFirestore
+   return await defaultFirestore
         .collection(REF_USER)
         .doc(user.id)
         .create(user)
@@ -15,7 +15,8 @@ const createUser = async(user) => {
             return new AppReturn(200, "OK", "Usuario criado com sucesso");
         })
         .catch(err => {
-           return new AppReturn(502,"OK", error.message);
+            console.log(err)
+           return new AppReturn(502,"Error", err);
         })
         
 }

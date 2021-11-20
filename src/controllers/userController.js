@@ -1,8 +1,7 @@
-const { response } = require("../app");
 const userController = require("../controllers/baseController"); 
 
 const getAllUsers = async(req, res) => {
-    res.status(204).json({
+    return res.status(204).json({
         status: 'success',
         data: null
     });
@@ -11,8 +10,10 @@ const getAllUsers = async(req, res) => {
 const setUser = async(req, res) => {
     let data = req.body;
     let response = await userController.createUser(data);
+    console.log(response);
+   return res.status(200).send(response);
 }
 
 module.exports = {
-    getAllUsers
+    getAllUsers, setUser
 }
