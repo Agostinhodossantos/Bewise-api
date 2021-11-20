@@ -1,7 +1,6 @@
 const { expectCt } = require('helmet');
-const {User} = require('../src/models/userModel');
+const {User} = require('../src/models/User');
 
-console.log(User)
 
 class MyUser {
     constructor(id, email, name, phone, location, school_levels, createdAt, others) {
