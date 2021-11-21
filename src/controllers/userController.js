@@ -17,10 +17,10 @@ const setUser = async (req, res) => {
         return res.status(500).send({status: 500, message: error})
     }
 
-    console.log(req.body)
-    console.log(data);
-    let response = await userController.createUser(data);
-    return res.status(response.statusCode).send(response);
+    // console.log(data.id)
+    // return res.status(200).send(JSON.stringify(data))
+   let response = await userController.createUser(data);
+   return res.status(response.statusCode).send(response);
 }
 
 module.exports = {

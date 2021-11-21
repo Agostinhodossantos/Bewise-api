@@ -10,29 +10,32 @@ function checkUser(user){
         err.push('id is requiered')
     } else if(isEmpty(email)) {
         err.push('Email is required');
-    } else if(isEmpty(name)) {
+    } 
+    if(isEmpty(name)) {
         name = "";
-    } else if(isEmpty(phone)) {
+    } 
+    
+    if(isEmpty(phone)) {
         phone = "";
-    } else if (isEmpty(location)) {
+    } 
+    if (isEmpty(location)) {
         location = "";
-    } else if (isEmpty(school_levels)) {
+    } 
+    if (isEmpty(school_levels)) {
         school_levels = "";
-    } else if (isEmpty(createdAt)) {
-        createdAt = getDate;
-    } else if (isEmpty(others)) {
+    } 
+    if (isEmpty(createdAt)) {
+        createdAt = getDate();
+    } 
+    if (isEmpty(others)) {
         others = "";
-    } else {
-        console.log(id)
-        let user_obj = new User(id, email, name, phone, location, school_levels, createdAt, others)
-        console.log(user_obj)
-        return user_obj;
     }
 
     if (err.length > 0) {
         throw err.toString()
-    }
-
+    } 
+    let user_obj = new User(id, email, name, phone, location, school_levels, createdAt, others);
+    return JSON.parse(JSON.stringify(user_obj));
 }
 
 
