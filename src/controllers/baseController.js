@@ -60,6 +60,19 @@ class UserControl {
                 return new AppReturn(502, "ERROR", err);
             })
     }
+
+    async updateUser(id, user_data) {
+        return await defaultFirestore
+            .collection(REF_USER)
+            .doc(id)
+            .update(user_data)
+            .then(_ => {
+                return new AppReturn(200, "OK", "User updated successfully")
+            })
+            .catch(err => {
+                return new AppReturn(502, "ERROR", err);
+            })
+    }
  }
 
 
