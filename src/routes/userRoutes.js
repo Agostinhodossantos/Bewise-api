@@ -8,6 +8,7 @@ router.post('/signup', authController.signup);
 
 router.get('/',userController.getAllUsers);
 router.post('/',userController.setUser)
+router.get('/:id', userController.getUser);
 
 
 module.exports = router;
