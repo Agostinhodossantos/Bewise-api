@@ -1,6 +1,6 @@
 #BEWISE REST API application
 
-This is a bare-bones example of a Sinatra application providing a REST
+This is a Bewise
 API to a DataMapper-backed model.
 
 The entire application is contained within the `app.rb` file.
@@ -15,15 +15,15 @@ It uses `run-curl-tests.rb` which runs each command defined in
 
 ## Install
 
-    bundle install
+    yarn install
 
 ## Run the app
 
-    unicorn -p 7000
+    yarn run dev
 
 ## Run the tests
 
-    ./run-tests.sh
+    yarn test
 
 # REST API
 
