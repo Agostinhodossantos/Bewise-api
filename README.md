@@ -29,13 +29,13 @@ It uses `run-curl-tests.rb` which runs each command defined in
 
 The REST API to the example app is described below.
 
-## Get list of Things
+## Get list of Users
 
 ### Request
 
-`GET /thing/`
+`GET /Users/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    curl -i -H 'Accept: application/json' http://localhost:3000/api/v1/users
 
 ### Response
 
@@ -48,13 +48,13 @@ The REST API to the example app is described below.
 
     []
 
-## Create a new Thing
+## Create a new User
 
 ### Request
 
-`POST /thing/`
+`POST /User/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' http://localhost:7000/thing
+    curl -i -H 'Accept: application/json' -d 'email=foo@gmail.com&name=Foo&status=new' http://localhost:3000/api/v1/users
 
 ### Response
 
@@ -72,9 +72,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`GET /thing/id`
+`GET /Users/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/1
+    curl -i -H 'Accept: application/json' http://localhost:3000/api/v1/users/1
 
 ### Response
 
@@ -87,13 +87,13 @@ The REST API to the example app is described below.
 
     {"id":1,"name":"Foo","status":"new"}
 
-## Get a non-existent Thing
+## Get a non-existent User
 
 ### Request
 
-`GET /thing/id`
+`GET /Users/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/9999
+    curl -i -H 'Accept: application/json' http://localhost:3000/api/v1/users/999
 
 ### Response
 
