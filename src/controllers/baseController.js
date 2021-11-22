@@ -1,6 +1,7 @@
 const {defaultDatabase, defaultFirestore} = require('../utils/dbconfig');
 const AppReturn = require('../utils/appError');
 const REF_USER = "users";
+const REF_BOOK = "library"
 
 
 class UserControl {
@@ -11,7 +12,7 @@ class UserControl {
         .doc(user.id)
         .create(user)
         .then(_=> {
-            return new AppReturn(200, "OK", "Usuario criado com sucesso");
+            return new AppReturn(200, "OK", "User created successfully");
         })
         .catch(err => {
            return new AppReturn(502,"Error", err);
@@ -75,7 +76,38 @@ class UserControl {
     }
  }
 
+ class BookControl {
+     async getBooks() {
+         let books = [];
+         return await defaultFirestore
+            .collection(REF_BOOK)
+            .get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(documentSnapshot => {
+                    books.push(documentSnapshot.data());
+                })
+            return new AppReturn(200, "OK", books);
+         }).catch(err => {
+            return new AppReturn(502, "ERROR", err);
+         })
+     }
+
+     async createBook(book) {
+         return await defaultFirestore
+            .collection('library')
+            .collection('books')
+            .doc(book.id)
+            .create(book)
+            .then(_=> {
+                return  new AppReturn(200, "OK", "Book created successfully")
+            })
+            .catch(err => {
+
+            })
+     }
+ }
+
 
 module.exports = {
-    UserControl  
+    UserControl, BookControl
 }
