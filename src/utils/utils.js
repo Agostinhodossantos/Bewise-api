@@ -1,23 +1,21 @@
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
+
+function getUid() {
+    return uuidv4();
+}
 
 function getDate() {
     return Date.now().toString()
 }
 
-function getData() {
-    return Date.now().toString()
-}
-
 function isEmpty(value) {
-
     if (typeof value == "string") {
         return checkString(value)
-    } else if (typeof value == "object") {
+    } else if(typeof value == "object") {
         return checkObject(value)
-    } else if(value  == null || value == undefined || value == "") {
-        return true
+    } else {
+        return checkString(value)
     }
-
 }
 
 function checkObject(value) {
@@ -29,30 +27,13 @@ function checkObject(value) {
 }
 
 function checkString(value) {
-    if (value == null || value == undefined || value == "") {
+    if(value == null || value == undefined || value == "") {
         return true
     } else {
         return false
     }
 }
 
-
-function removeFile(path) {
-    try{
-        fs.unlinkSync(path)
-    } catch(err) {
-        console.log(err)
-    }
-}
-
-
-function getUuid() {
-    return uuidv4()
-}
-
 module.exports = {
-    isEmpty,
-    getDate,
-    getUuid,
-    removeFile
+    getDate, isEmpty,getUid
 }
