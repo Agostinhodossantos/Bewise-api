@@ -5,6 +5,10 @@ const getAllBooks = async(req, res) => {
     return res.status(response.statusCode).json(response);
 }
 
+const setBook = async(req, res) => {
+    const book = req.body;
+}
+
 const getBook = (req, res) => {
 }
 
