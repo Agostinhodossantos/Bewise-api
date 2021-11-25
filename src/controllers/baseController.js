@@ -1,7 +1,7 @@
 const {defaultDatabase, defaultFirestore} = require('../utils/dbconfig');
 const AppReturn = require('../utils/appError');
 const REF_USER = "users";
-const REF_BOOK = "library"
+const REF_BOOK = "books"
 
 
 class UserControl {
@@ -65,7 +65,7 @@ class UserControl {
     async updateUser(id, user_data) {
         return await defaultFirestore
             .collection(REF_USER)
-            .doc(id)
+            .doc("")
             .update(user_data)
             .then(_ => {
                 return new AppReturn(200, "OK", "User updated successfully")
@@ -77,7 +77,7 @@ class UserControl {
  }
 
  class BookControl {
-     async getBooks() {
+     async getAllBooks() {
          let books = [];
          return await defaultFirestore
             .collection(REF_BOOK)
@@ -92,17 +92,40 @@ class UserControl {
          })
      }
 
+     async getBook(id) {
+         return await defaultFirestore
+                .collection(REF_BOOK)
+                .doc(id)
+                .get(documentSnapshot => {
+                    return new AppReturn(200, "OK", documentSnapshot.data());
+                })
+                .catch(err => {
+                    return new AppReturn(502, "ERROR", err);
+                })
+     }
+
+     async deleteBook(id) {
+         return await defaultFirestore
+                .collection(REF_BOOK)
+                .doc(id)
+                .delete(documentSnapshot => {
+                    return new AppReturn(200, "OK", "Book removed successfully");
+                })
+                .catch(err => {
+                    return new AppReturn(502, "OK", err);
+                })
+     }
+
      async createBook(book) {
          return await defaultFirestore
-            .collection('library')
-            .collection('books')
+            .collection(REF_BOOK)
             .doc(book.id)
             .create(book)
             .then(_=> {
-                return  new AppReturn(200, "OK", "Book created successfully")
+                return new AppReturn(200, "OK", "Book created successfully");
             })
             .catch(err => {
-
+                return new AppReturn(502, "ERROR", err);
             })
      }
  }
